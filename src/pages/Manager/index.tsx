@@ -4,8 +4,6 @@ import { Tabs } from "@taroify/core";
 import { View } from "@tarojs/components";
 import { useEffect } from "react";
 import TypeManager from './TypeManager';
-// @ts-ignore
-const db = wx.cloud.database();
 
 export default function VipCenter () {
   useEffect(() => {

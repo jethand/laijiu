@@ -6,9 +6,7 @@ import { Plus } from "@taroify/icons"
 import ShoppingItem from "../../components/ShoppingItem";
 import Taro, { useDidShow } from "@tarojs/taro";
 import { View } from "@tarojs/components";
-
-// @ts-ignore
-const db = wx.cloud.database();
+import { getProductTypesList, getProductTypesListById, productTypeCreate, getProductInfo } from '../../utils/RequestHepler';
 
 export default function TypeManager () {
   const [ typesList, setTypesList ] = useState<any[]>([]);
@@ -24,13 +22,12 @@ export default function TypeManager () {
     Taro.showLoading({
       title: '加载中',
     });
-    const where = type_id === -1 ? {} : {type_id }
-    const { data } = await db.collection('product_info_list').where(Object.assign(where, {selling: 1})).get();
+    const { data } = await getProductTypesListById(Number(type_id));
     Taro.hideLoading();
     setShoppingList(data);
   };
   const fetchTypesList = async () => {
-    const { data } = await db.collection('product_type_list').get();
+    const { data } = await getProductTypesList();
     setTypesList([{type_id: -1, type_name: "全部"}, ...data, {type_id: -2, type_name: "添加"}]);
   };
   const handleTabClick = ({ value }) => {
@@ -60,15 +57,9 @@ export default function TypeManager () {
     Taro.showLoading({
       title: '添加中',
     });
-    const typeIds = typesList.map((item) => item.type_id);
-    const maxId = Math.max(...typeIds);
     setOpen(false);
-    await db.collection('product_type_list').add({
-      data: {
-        type_name: value,
-        type_id: maxId+1
-      }
-    });
+    console.log('value: ', value);
+    await productTypeCreate(value);
     Taro.showToast({
       title: "添加成功"
     });
@@ -76,7 +67,8 @@ export default function TypeManager () {
   };
   useEffect(() => {
     fetchTypesList();
-    fetchList(-1)
+    fetchList(-1);
+    getProductInfo(100, 1000);
   }, []);
   useEffect(() => {
     if (!open) {
@@ -90,9 +82,12 @@ export default function TypeManager () {
         <Empty>
           <Empty.Image src="network" />
           <Empty.Description>暂无数据</Empty.Description>
-          <Button shape="round" color="danger" style={{width: "160rpx", height: "80rpx",marginTop: "48rpx"}} onClick={() => {navigateTo(typeValue)}}>
-            添加
-          </Button>
+          {
+            typeValue !== -2 ? 
+            <Button shape="round" color="danger" style={{width: "160rpx", height: "80rpx",marginTop: "48rpx"}} onClick={() => {navigateTo(typeValue)}}>
+              添加
+            </Button> : null
+          }
         </Empty>
       )
     }

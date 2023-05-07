@@ -4,8 +4,7 @@ import { ScrollView } from "@tarojs/components"
 import { useEffect, useState } from "react"
 import Taro from "@tarojs/taro"
 import ShoppingItem from "../../components/ShoppingItem";
-// @ts-ignore
-const db = wx.cloud.database();
+import { getProductTypesList, getProductTypesListById } from "../../utils/RequestHepler";
 
 export default function Shopping () {
   const [typeList, setTypeList] = useState<any[]>([]);
@@ -14,8 +13,7 @@ export default function Shopping () {
     Taro.showLoading({
       title: '加载中',
     });
-    const where = type_id === -1 ? {} : {type_id }
-    const { data } = await db.collection('product_info_list').where(Object.assign(where, {selling: 1})).get();
+    const { data } = await getProductTypesListById(type_id);
     Taro.hideLoading();
     setShoppingList(data);
   };
@@ -26,7 +24,7 @@ export default function Shopping () {
     });
   };
   const fetchTypeList = async () => {
-    const { data } = await db.collection('product_type_list').get();
+    const { data } = await getProductTypesList();
     setTypeList([{type_id: -1, type_name: "全部"}, ...data]);
   }
   useEffect(() => {

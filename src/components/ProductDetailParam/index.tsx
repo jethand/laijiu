@@ -1,8 +1,6 @@
 import { Cell, Field, Form, Input } from "@taroify/core";
 export default function ProductDetailParam (props: any) {
   const { data } = props;
-  console.log('data: ', data);
-
   const FieldItem = ({title, value}) => (
     <Field
       name="text"

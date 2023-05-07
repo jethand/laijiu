@@ -4,9 +4,7 @@ import HomeRecommand from "../../components/HomeRecommand";
 import { ScrollView } from '@tarojs/components';
 import { useEffect, useState } from 'react';
 import Taro from '@tarojs/taro';
-
-// @ts-ignore
-const db = wx.cloud.database();
+import { getHomeRecommand } from '../../utils/RequestHepler';
 
 export default function Home () {
   const [ recommandData, setRecommand ] = useState<any>([]);
@@ -15,13 +13,9 @@ export default function Home () {
     Taro.showLoading({
       title: '加载中',
     });
-    const { data } = await db.collection('home_recommand').get();
+    const { data } = await getHomeRecommand();
     Taro.hideLoading();
-    const [config] = data;
-    if (!config) {
-      return;
-    }
-    const { banner, recommand } = config;
+    const { banner, recommand } = data;
     setBannerList(banner);
     setRecommand(recommand)
   };

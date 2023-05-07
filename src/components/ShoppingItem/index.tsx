@@ -19,7 +19,7 @@ export default function ShoppingItem (props: any) {
   return (
     <View className="shopping-item" onClick={handleClick}>
       <View className="shopping-item-left">
-        <Image className="shopping-item-img" src={thumbnail[0]?.url}></Image>
+        <Image className="shopping-item-img" src={thumbnail}></Image>
       </View>
       <View className="shopping-item-right">
         <View className='shopping-item-right-title'>

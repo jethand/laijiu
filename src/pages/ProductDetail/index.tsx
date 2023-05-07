@@ -9,26 +9,18 @@ import { getCurrentInstance } from "@tarojs/taro";
 import { useEffect, useState } from "react";
 import Taro from "@tarojs/taro";
 
-// @ts-ignore
-const db = wx.cloud.database();
+
 export default function ProductDetail () {
+  
   const [proInfo, setProInfo] = useState<any>(null);
   const { router } = getCurrentInstance();
   const { type_id, pro_id } = router?.params || {};
-
   const getDetailInfo = async () => {
     Taro.showLoading({
       title: '加载中',
     });
-    const {data: [infoData] } = await db.collection('product_info_list').where({
-      pro_id: Number(pro_id),
-      type_id: Number(type_id),
-      selling: 1
-    }).get();
-    const { data: [detailData] } = await db.collection('product_info_detail_list').where({
-      pro_id: Number(pro_id),
-      type_id: Number(type_id)
-    }).get();
+    const {data: { data: infoData}} = await Taro.request({ url: `http://112.74.189.230:8081/product/info/${type_id}/${pro_id}` })
+    const { data: { data: detailData} } = await Taro.request({ url: `http://112.74.189.230:8081/product/detail/${type_id}/${pro_id}` });
     Taro.hideLoading();
     if (!infoData || !detailData) {
       return;
@@ -50,7 +42,7 @@ export default function ProductDetail () {
         enableBackToTop
         scrollY
         scrollWithAnimation>
-        <ProductDetailSwiper />
+        <ProductDetailSwiper banners={proInfo.banners} />
         <View className="product-detail_header">
           <View className="product-detail_header_1">
             <View className="product-detail_header_price"><Text>¥</Text>{proInfo.price}</View>

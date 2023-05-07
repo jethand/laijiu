@@ -6,9 +6,6 @@ import { BaseEventOrig, FormProps, View } from "@tarojs/components";
 import Taro from "@tarojs/taro";
 import { getCurrentInstance } from "@tarojs/taro";
 import { useEffect, useRef, useState } from "react";
-import { getNextProId } from "../../../utils/collection";
-// @ts-ignore
-const db = wx.cloud.database();
 
 export default function ProductModify () {
   const { router } = getCurrentInstance();
@@ -24,22 +21,18 @@ export default function ProductModify () {
     Taro.showLoading({
       title: '加载中',
     });
-    const {data: [infoData] } = await db.collection('product_info_list').where({
-      pro_id: Number(pro_id),
-      type_id: Number(type_id),
-      selling: 1
-    }).get();
-    const { data: [detailData] } = await db.collection('product_info_detail_list').where({
-      pro_id: Number(pro_id),
-      type_id: Number(type_id)
-    }).get();
+
+    const {data: { data: infoData}} = await Taro.request({ url: `http://112.74.189.230:8081/product/info/${type_id}/${pro_id}` })
+    const { data: { data: detailData} } = await Taro.request({ url: `http://112.74.189.230:8081/product/detail/${type_id}/${pro_id}` });
     Taro.hideLoading();
     if (!infoData || !detailData) {
       return;
     }
     const mergeData = {
       ...infoData,
-      ...detailData
+      ...detailData,
+      thumbnail: [{url: infoData.thumbnail}],
+      pic_list: []
     };
     // @ts-ignore
     formRef.current?.setValues(mergeData)
@@ -56,28 +49,29 @@ export default function ProductModify () {
       title: "正在提交数据..."
     });
     if (isModidy) {
-      await db.collection('product_info_list')
-      .where({
-        pro_id: Number(pro_id),
-        type_id: Number(type_id)
-      })
-      .update({
+      await Taro.request({ 
+        url: `http://112.74.189.230:8081/product/info/update/${type_id}/${pro_id}`,
+        header: {
+          'content-type': 'application/json'
+        },
+        method: "PUT",
         data: {
           discount_price: Number(nextData?.discount_price),
           price: Number(nextData?.price),
           pro_name: nextData?.pro_name,
           tag: nextData?.tag,
-        },
+          selling: 1
+        }
       });
-      await db.collection('product_info_detail_list')
-      .where({
-        pro_id: Number(pro_id),
-        type_id: Number(type_id)
-      })
-      .update({
+      await Taro.request({ 
+        url: `http://112.74.189.230:8081/product/detail/update/${type_id}/${pro_id}`,
+        header: {
+          'content-type': 'application/json'
+        },
+        method: "PUT",
         data: {
           title: nextData?.title,
-          desc: nextData?.desc,
+          subtitle: nextData?.subtitle,
           abv: Number(nextData?.abv),
           net_content: Number(nextData?.net_content),
           package_from: nextData?.package_from,
@@ -87,42 +81,45 @@ export default function ProductModify () {
           specifications: Number(nextData?.specifications),
           suitable_scene: nextData?.suitable_scene,
           flavor: nextData?.flavor,
-        },
+        }
       });
       Taro.showToast({
         title: "更新成功"
       });
       
     } else {
-      const nextProId = await getNextProId();
-      await db.collection('product_info_list').add({
+      const { data: { data: createdProId}} = await Taro.request({ 
+        url: `http://112.74.189.230:8081/product/info/create/${type_id}`,
+        header: {
+          'content-type': 'application/json'
+        },
+        method: "POST",
         data: {
-          selling: 1,
           discount_price: Number(nextData?.discount_price),
           price: Number(nextData?.price),
           pro_name: nextData?.pro_name,
           tag: nextData?.tag,
-          pro_id: nextProId,
-          type_id: Number(type_id),
-          thumbnail: []
+          thumbnail: ""
         }
-      })
-      await db.collection('product_info_detail_list').add({
+      });
+      await Taro.request({ 
+        url: `http://112.74.189.230:8081/product/detail/create/${type_id}/${createdProId}`,
+        header: {
+          'content-type': 'application/json'
+        },
+        method: "POST",
         data: {
           title: nextData?.title,
-          desc: nextData?.desc,
-          abv: Number(nextData?.abv),
-          net_content: Number(nextData?.net_content),
+          subtitle: nextData?.subtitle,
+          abv: nextData?.abv,
+          net_content: nextData?.net_content,
           package_from: nextData?.package_from,
           pro_number: nextData?.pro_number,
           producer_area: nextData?.producer_area,
           shelf_life: nextData?.shelf_life,
-          specifications: Number(nextData?.specifications),
+          specifications: nextData?.specifications,
           suitable_scene: nextData?.suitable_scene,
-          flavor: nextData?.flavor,
-          pro_id: nextProId,
-          type_id: Number(type_id),
-          pic_list: []
+          flavor: nextData?.flavor
         }
       });
       Taro.showToast({
@@ -196,7 +193,7 @@ export default function ProductModify () {
             </Form.Control>
           </Form.Item>
 
-          <Form.Item name="desc" rules={[{ required: true, message: "必填项" }]}>
+          <Form.Item name="subtitle" rules={[{ required: true, message: "必填项" }]}>
             <Form.Label>详情页描述</Form.Label>
             <Form.Control>
               <Textarea autoHeight placeholder="请输入详情页描述" limit={100} />
@@ -254,7 +251,7 @@ export default function ProductModify () {
             </Form.Control>
           </Form.Item>
 
-          <Form.Item name="flavor" rules={[{ required: true, message: "必填项" }]} ref={flavorRef} defaultValue={"酱香"}>
+          <Form.Item name="flavor" rules={[{ required: true, message: "必填项" }]} ref={flavorRef} defaultValue={"酱香型"}>
             <Form.Label>香型</Form.Label>
             <Form.Control>
               <Input readonly placeholder="点击选择香型" onClick={() => setOpen(true)} />

@@ -3,7 +3,7 @@ import Taro from "@tarojs/taro"
 import { HomeOutlined, ShopOutlined, AppsOutlined, AwardOutlined } from "@taroify/icons";
 import './index.scss';
 import { View } from '@tarojs/components';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import React from "react";
 const Home = React.lazy(() => import('../Home/index'));
 const Shopping = React.lazy(() => import('../Shopping/index'));
@@ -66,14 +66,6 @@ export default function App () {
     Taro.setNavigationBarColor({ backgroundColor, frontColor });
     setTab(value);
   };
-
-  const initRequest = async () => {
-    /* const res = await Taro.request({url: "http://localhost:7001/product/detail/list?type_id=101"})
-    console.log('res: ', res); */
-  };
-  useEffect(() => {
-    initRequest();
-  }, [])
   return (
     <View className='root'>
       <View className='app'>
