@@ -1,0 +1,38 @@
+.shopping-item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 32rpx;
+  &-left {
+    width: 188rpx;
+    height: 188rpx;
+    background-color: #C3BED4;
+  }
+  &-right {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 22rpx;
+    justify-content: space-between;
+    &-title {
+      color: #333;
+      font-size: 26rpx;
+      overflow: hidden;
+      line-clamp: 2;
+      text-overflow: ellipsis;
+    }
+  }
+  &-img {
+    width: 188rpx;
+    height: 188rpx;
+  }
+  &-discount-price {
+    font-size: 30rpx;
+    color: #2C2C2C;
+  }
+  &-price {
+    margin-left: 14rpx;
+    font-size: 22rpx;
+    color: #C7C7C7;
+    text-decoration: line-through;
+  }
+}

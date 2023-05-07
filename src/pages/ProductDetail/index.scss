@@ -1,0 +1,85 @@
+.product-detail {
+  height: 100%;
+  background-color: #f2f2f2;
+  overflow: scroll;
+  &_header {
+    display: flex;
+    flex-direction: column;
+    padding: 0rpx 22rpx 36rpx;
+    background-color: #FFFFFF;
+    border-radius: 0rpx 12rpx;
+    &_1 {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 14rpx 0rpx 8rpx;
+    }
+    &_price {
+      font-size: 44rpx;
+      color: #FB5340;
+      font-weight: bold;
+      align-self: center;
+      Text {
+        font-size: 30rpx;
+        margin-right: 4rpx;
+      }
+    }
+    &_right {
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      justify-content: flex-end;
+      width: 200rpx;
+      &_fav {
+        &_icon {
+          font-size: 38rpx;
+          font-weight: bold;
+          color: #494848;
+        }
+        &_text {
+          font-size: 22rpx;
+          color: #6f6f6f;
+        }
+      }
+    }
+    &_title {
+      color: #262525;
+      font-size: 34rpx;
+      font-weight: bold;
+    }
+    &_desc {
+      margin-top: 20rpx;
+      color: #989898;
+      font-size: 26rpx;
+    }
+  }
+  &_detail_card {
+    background-color: #fff;
+    border-radius: 12rpx;
+    padding: 32rpx 22rpx;
+    margin-top: 22rpx;
+    &_title {
+      font-size: 26rpx;
+      font-weight: bold;
+    }
+  }
+  &_detail {
+    &_images {
+      margin-top: 32rpx;
+    }
+  }
+  &_param {
+    &_form {
+      margin-top: 32rpx;
+    }
+  }
+  &_tips {
+    &_more {
+      margin-top: 32rpx;
+      &_1 {
+        font-size: 26rpx;
+        color: #666;
+      }
+    }
+  }
+}

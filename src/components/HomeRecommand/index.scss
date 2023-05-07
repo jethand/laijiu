@@ -1,0 +1,19 @@
+.home-container {
+  padding: 20rpx;
+  background: linear-gradient(to bottom right, #0D1740, #16245C);
+  min-height: 1000rpx;
+  &-title {
+    color: #b18c6e;
+    font-size: 38rpx;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 4rpx;
+    margin-top: 42rpx;
+    margin-bottom: 28rpx;
+  }
+  &-video {
+    border-radius: 28rpx;
+    align-self: center;
+    object-fit: fill;
+  }
+}

@@ -1,0 +1,9 @@
+.home-swiper {
+  height: 100%;
+  &-item {
+    display: block;
+    box-sizing: border-box;
+    background: #fff;
+    pointer-events: none;
+  }
+}

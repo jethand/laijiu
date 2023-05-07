@@ -1,0 +1,32 @@
+{
+    "miniprogramRoot": "dist/",
+    "projectname": "laijiu_ui",
+    "description": "laijiu_ui",
+    "appid": "wx5bd7109bb4213c74",
+    "setting": {
+        "urlCheck": true,
+        "es6": true,
+        "enhance": true,
+        "compileHotReLoad": false,
+        "postcss": true,
+        "minified": false,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        },
+        "condition": true
+    },
+    "compileType": "miniprogram",
+    "libVersion": "2.31.1",
+    "srcMiniprogramRoot": "dist/",
+    "packOptions": {
+        "ignore": [],
+        "include": []
+    },
+    "condition": {},
+    "editorSetting": {
+        "tabIndent": "insertSpaces",
+        "tabSize": 4
+    }
+}

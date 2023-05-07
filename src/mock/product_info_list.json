@@ -1,0 +1,73 @@
+[
+  {
+    "type_id": 100,
+    "pro_id": 1000,
+    "pro_name": "赖鼎2021 精装",
+    "selling": 1,
+    "discount_price": 1299,
+    "price": 1299,
+    "tag": "高端白酒,送礼",
+    "thumbnail": "https://636c-cloud1-8g23cnc852029191-1317999356.tcb.qcloud.la/shopping/100_1000.jpeg?sign=f4a85c0f9bee71f432cf9503689e68c7&t=1682756285"
+  },
+  {
+    "type_id": 101,
+    "pro_id": 1001,
+    "type_name": "甲骨文-年度精选",
+    "selling": 1,
+    "discount_price": 1299,
+    "price": 1299,
+    "tag": "高端白酒,送礼",
+    "thumbnail": "https://636c-cloud1-8g23cnc852029191-1317999356.tcb.qcloud.la/shopping/100_1001.jpeg?sign=8b4fdae44bb3c79d195d2a48dfb7390c&t=1682756307"
+  },
+  {
+    "type_id": 102,
+    "pro_id": 1002,
+    "type_name": "复窖古酒-30",
+    "selling": 1,
+    "discount_price": 1299,
+    "price": 1299,
+    "tag": "高端白酒,送礼",
+    "thumbnail": "https://636c-cloud1-8g23cnc852029191-1317999356.tcb.qcloud.la/shopping/100_1002.jpeg?sign=3da36dbd7646d1fbbd14d932a3751501&t=1682756321"
+  },
+  {
+    "type_id": 102,
+    "pro_id": 1003,
+    "type_name": "复窖古酒1990-龙凤呈祥",
+    "selling": 1,
+    "discount_price": 1299,
+    "price": 1299,
+    "tag": "高端白酒,送礼",
+    "thumbnail": "https://636c-cloud1-8g23cnc852029191-1317999356.tcb.qcloud.la/shopping/100_1003.jpeg?sign=6a07f0df3538b5eec84f6c66d8d4c7fc&t=1682756375"
+    
+  },
+  {
+    "type_id": 103,
+    "pro_id": 1004,
+    "type_name": "回归-专注品质、简化包装",
+    "selling": 1,
+    "discount_price": 1299,
+    "price": 1299,
+    "tag": "高端白酒,送礼",
+    "thumbnail": "https://636c-cloud1-8g23cnc852029191-1317999356.tcb.qcloud.la/shopping/100_1004.jpeg?sign=76d2cf618cb5547176d12e17e35fe45c&t=1682756332"
+  },
+  {
+    "type_id": 104,
+    "pro_id": 1005,
+    "type_name": "回归公斤装-1L",
+    "selling": 1,
+    "discount_price": 1299,
+    "price": 1299,
+    "tag": "高端白酒,送礼",
+    "thumbnail": "https://636c-cloud1-8g23cnc852029191-1317999356.tcb.qcloud.la/shopping/100_1005.jpeg?sign=528fbe14ffdea5be9411ca688796ea38&t=1682756403"
+  },
+  {
+    "type_id": 104,
+    "pro_id": 1005,
+    "type_name": "回归-陈酿",
+    "selling": 1,
+    "discount_price": 1299,
+    "price": 1299,
+    "tag": "高端白酒,送礼",
+    "thumbnail": "https://636c-cloud1-8g23cnc852029191-1317999356.tcb.qcloud.la/shopping/100_1006.jpeg?sign=22e6c4e0f8a04ebe54ca489899b60886&t=1682756414"
+  }
+]

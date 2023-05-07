@@ -1,0 +1,32 @@
+
+.home-card {
+  min-height: 160px;
+  background-color: #132264;
+  border-radius: 13rpx;
+  padding: 24px;
+  position: relative;
+}
+.home-card-title {
+  font-size: 30rpx;
+  color: #F5E0C0;
+  letter-spacing: 2rpx;
+}
+.home-card-subtitle {
+  font-size: 24rpx;
+  color: #4F5478;
+  margin-top: 16rpx;
+  margin-bottom: 18rpx;
+}
+.home-card-action {
+  height: auto;
+  font-size: 20rpx;
+  text-align: center;
+  color: #132264;;
+  background-color: #F5E0C0;
+  padding: 6rpx 10rpx;
+  width: 102rpx;
+  border-radius: 18rpx;
+}
+.home-card-action-share-button {
+  width: 120rpx;
+}

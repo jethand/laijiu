@@ -1,0 +1,33 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;;
+}
+.app {
+  display: flex;
+  flex: 1;
+  overflow: scroll;
+}
+
+
+.flex {
+  display: flex;
+}
+.flex1 {
+  display: flex;
+  flex: 1;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.text-center {
+  text-align: center;
+}
+.width20 {
+  width: 20rpx;
+}

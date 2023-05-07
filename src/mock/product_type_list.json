@@ -1,0 +1,22 @@
+[
+  {
+    "type_id": 100,
+    "type_name": "赖鼎"
+  },
+  {
+    "type_id": 101,
+    "type_name": "甲骨文"
+  },
+  {
+    "type_id": 103,
+    "type_name": "复窖古酒"
+  },
+  {
+    "type_id": 104,
+    "type_name": "回归"
+  },
+  {
+    "type_id": 105,
+    "type_name": "历史产品"
+  }
+]
