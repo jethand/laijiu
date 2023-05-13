@@ -244,7 +244,7 @@ export default function ProductModify () {
             </Form.Control>
           </Form.Item>
 
-          <Form.Item name="suitable_scene" rules={[{ required: true, message: "必填项" }]} defaultValue={"例如:约会,商务,送礼/礼品,婚宴,纪念日,聚会,自饮等"}>
+          <Form.Item name="suitable_scene" rules={[{ required: true, message: "必填项" }]} defaultValue={"约会,商务宴请,送礼/礼品,婚宴,纪念日,聚会,自饮"}>
             <Form.Label>适用场景</Form.Label>
             <Form.Control>
               <Textarea autoHeight placeholder="请输入适用场景" limit={50}/>

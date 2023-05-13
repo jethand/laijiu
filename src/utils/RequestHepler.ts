@@ -2,7 +2,7 @@ import Taro from "@tarojs/taro";
 
 export const aliyunOrigin = `http://112.74.189.230:8081`;
 export const getHomeRecommand = () => {
-  return Taro.request({url: `http://112.74.189.230:3018/laijiu/home/home_recommand.json`});
+  return Taro.request({url: `${aliyunOrigin}/www/static/uploads/home_recommand.json`});
 }
 
 // 获取酒种类列表

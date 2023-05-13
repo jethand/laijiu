@@ -31,6 +31,7 @@ export default function ProductDetail () {
   useEffect(() => {
     getDetailInfo();
   }, []);
+  console.log('proInfo.pic_list.split(','): ', proInfo?.pic_list);
   return (
     proInfo ? 
       <ScrollView
@@ -45,7 +46,7 @@ export default function ProductDetail () {
         <ProductDetailSwiper banners={proInfo.banners} />
         <View className="product-detail_header">
           <View className="product-detail_header_1">
-            <View className="product-detail_header_price"><Text>¥</Text>{proInfo.price}</View>
+            <View className="product-detail_header_price"><Text>¥</Text>{proInfo.discount_price}</View>
             <View className="product-detail_header_right">
               <View className="product-detail_header_right_fav">
                 <ShareOutlined className="product-detail_header_right_fav_icon"/>
@@ -58,13 +59,14 @@ export default function ProductDetail () {
             </View>
           </View>
           <View className="product-detail_header_title">{proInfo.title}</View>
-          <View className="product-detail_header_desc">{proInfo.desc}</View>
+          <View className="product-detail_header_desc">{proInfo.subtitle}</View>
         </View>
         <View className="product-detail_detail product-detail_detail_card">
           <View className="product-detail_detail_card_title">商品详情</View>
           <View className="product-detail_detail_images"></View>
-          <Image style={{height: "680rpx"}} src="https://img30.360buyimg.com/sku/jfs/t1/206604/38/11351/218391/61a868f9E0353240f/23747181522f027a.jpg"></Image>
-          <Image style={{height: "680rpx"}} src="https://img30.360buyimg.com/sku/jfs/t1/161389/38/26328/337798/61a868faE27b7bafd/26775e1a6f6954f4.jpg"></Image>
+          {
+            proInfo.pic_list.split(',').map((url: string) => <Image src={url} mode={"widthFix"} placeholder="加载中..." />)
+          }
         </View>
         <View className="product-detail_param product-detail_detail_card">
           <View className="product-detail_detail_card_title">商品规格</View>

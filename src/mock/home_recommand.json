@@ -1,74 +1,74 @@
 {
   "banner": [
     {
-      "src_url": "https://636c-cloud1-8g23cnc852029191-1317999356.tcb.qcloud.la/home/1.png?sign=f622befb998ece3768faae8b22359ea9&t=1682750182",
-      "action_url": ""
+      "action_url": "",
+      "src_url": "http://112.74.189.230:3018/laijiu/home-banner-1.png"
     }
   ],
   "recommand": [
     {
-      "type": 0,
-      "title": "饮酒知识",
-      "subtitle": "随便输入两个字吧",
       "action": {
         "text": "点击查看",
-        "url": ""
+        "url": "/pages/WebViewComp/index?url=https://www.zhihu.com/question/451458924/answer/1893988151?utm_id=0&title=醒酒小知识"
       },
-      "thumbnail": ""
+      "subtitle": "快速醒酒小知识",
+      "thumbnail": "",
+      "title": "如何快速醒酒",
+      "type": 0
     },
     {
-      "type": 0,
-      "title": "饮酒知识2",
-      "subtitle": "随便输入两个字吧",
       "action": {
         "text": "点击查看",
-        "url": ""
+        "url": "/pages/WebViewComp/index?url=https://www.zhihu.com/question/27175728/answer/2489787182?utm_id=0&title=酒桌座次规矩"
       },
-      "thumbnail": ""
+      "subtitle": "酒桌座次规矩",
+      "thumbnail": "",
+      "title": "中国酒桌座次讲究",
+      "type": 0
     },
     {
-      "type": 1,
-      "title": "饮酒知识2",
-      "subtitle": "随便输入两个字吧",
       "action": {
-        "url": "/pages/WebViewComp/index?url=www.zhihu.com%2Fquestion%2F40096999%2Fanswer%2F711792506%3Futm_id%3D0&title=醒酒小知识"
-      }
+        "url": ""
+      },
+      "subtitle": "分享给微信好友",
+      "title": "分享朋友",
+      "type": 1
     },
     {
       "type": 2,
-      "title": "甲骨文酒-年度精选",
+      "action": {
+        "text": "点击查看",
+        "url": "/pages/ProductDetail/index?type_id=101&pro_id=1001"
+      },
       "subtitle": "贵州首批老字号企业酱香型白酒",
-      "action": {
-        "text": "点击查看",
-        "url": ""
-      },
-      "thumbnail": "http://www.laijiu.com.cn/static/picture/p3.jpg"
+      "thumbnail": "http://112.74.189.230:3018/laijiu/101_1001.jpeg",
+      "title": "甲骨文酒-年度精选"
     },
     {
+      "title": "复窖古酒-30",
       "type": 3,
-      "title": "复窖古酒",
-      "subtitle": "贵州老字号",
       "action": {
         "text": "点击查看",
-        "url": "/pages/ProductDetail/index?"
+        "url": "/pages/ProductDetail/index?type_id=102&pro_id=1002"
       },
-      "thumbnail": "http://www.laijiu.com.cn/static/picture/p3.jpg"
+      "subtitle": "复窖古酒-30",
+      "thumbnail": "http://112.74.189.230:3018/laijiu/101_1001.jpeg"
     },
     {
-      "type": 3,
-      "title": "赖鼎好酒",
-      "subtitle": "贵州老字号",
       "action": {
         "text": "点击查看",
-        "url": "/pages/ProductDetail/index?"
+        "url": "/pages/ProductDetail/index?type_id=102&pro_id=1003"
       },
-      "thumbnail": "http://www.laijiu.com.cn/static/picture/p3.jpg"
+      "subtitle": "复窖古酒-龙凤呈祥",
+      "thumbnail": "http://112.74.189.230:3018/laijiu/102_1003.jpeg",
+      "title": "复窖古酒-1990",
+      "type": 3
     },
     {
-      "type": 4,
-      "title": "贵州回归赖酒有限公司",
       "subtitle": "余不欲敝帚自珍，而望与时贤，亲友共享，故将此酒献出",
-      "video": "https://636c-cloud1-8g23cnc852029191-1317999356.tcb.qcloud.la/home/video.mp4?sign=828bb2d45841f24946242135717cef24&t=1682750519"
+      "title": "贵州回归赖酒有限公司",
+      "type": 4,
+      "video": "http://112.74.189.230:3018/laijiu/home-video.mp4"
     }
   ]
 }

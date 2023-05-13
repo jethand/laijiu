@@ -2,13 +2,16 @@ import { View, Text } from "@tarojs/components";
 import { Image } from "@taroify/core";
 
 import './index.scss';
+import Taro from "@tarojs/taro";
 export default function Card2 (props: any) {
   const { thumbnail, title, subtitle, action} = props;
 
   const handleClick = () => {
     if (action.url) {
-      
-    }
+      Taro.navigateTo({
+        url: action.url
+      });
+  }
   };
   return (
     <View className="home-card flex-row" style={{padding: "46rpx 24rpx 24rpx 44rpx"}} onClick={handleClick}>

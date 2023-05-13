@@ -2,10 +2,11 @@
 
 import { Tabs } from "@taroify/core";
 import { View } from "@tarojs/components";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import TypeManager from './TypeManager';
-
+import Culture from './Culture'
 export default function VipCenter () {
+  const [value, setValue] = useState('culture')
   useEffect(() => {
     
   }, []);
@@ -15,12 +16,14 @@ export default function VipCenter () {
       {/* 产品管理 */}
       {/* 首页推荐管理 */}
       {/* 赖酒文化管理 */}
-      <Tabs theme="card">
-        <Tabs.TabPane title="产品管理">
+      <Tabs theme="card" value={value} onChange={setValue}>
+        <Tabs.TabPane title="产品管理" value={"product"}>
           <TypeManager />
         </Tabs.TabPane>
-        <Tabs.TabPane title="首页推荐管理">内容 2</Tabs.TabPane>
-        <Tabs.TabPane title="赖酒文化管理">内容 3</Tabs.TabPane>
+        <Tabs.TabPane title="赖酒文化管理" value={"culture"}>
+          <Culture />
+        </Tabs.TabPane>
+        <Tabs.TabPane title="首页推荐管理" value={"home"}>暂未开放</Tabs.TabPane>
       </Tabs>
       
     </View>

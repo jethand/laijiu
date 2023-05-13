@@ -4,40 +4,35 @@ import { Avatar, Grid, Image } from "@taroify/core";
 import { View, Text, Video } from "@tarojs/components";
 import './index.scss';
 
-export default function TrendItem () {
+export default function TrendItem ({ title, create_name, type, images, videos, create_time }) {
   return (
     <View className="trends flex-row">
       <View className="trends-avatar">
         <Avatar src="http://www.laijiu.com.cn/../image/nav-logo.jpg" />
       </View>
       <View className="trends-right">
-        <Text className="trends-name">赖酒管理员</Text>
-        <View className="trends-title">
-        赖氏三代酿酒，百年风雨于同一方水土，历经父传子、师传徒，沉淀的不只是汗水，更是浓浓的情感。<br />
-        我有酒，你有故事吗
-        </View>
+        <Text className="trends-name">{create_name}</Text>
+        <View className="trends-title">{title}</View>
+        
         <View className="trends-res">
+        {type === 1 ? (
           <Grid columns={3} bordered={false}>
-            <Grid.Item>
-              <Image className="trends-res-image" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
-            </Grid.Item>
-            <Grid.Item>
-              <Image className="trends-res-image" src="https://img.yzcdn.cn/vant/apple-2.jpg" />
-            </Grid.Item>
-            <Grid.Item>
-              <Image className="trends-res-image" src="https://img.yzcdn.cn/vant/apple-3.jpg" />
-            </Grid.Item>
-            <Grid.Item>
-              <Image className="trends-res-image" src="https://img.yzcdn.cn/vant/apple-1.jpg" />
-            </Grid.Item>
-            <Grid.Item>
-              <Image className="trends-res-image" src="https://img.yzcdn.cn/vant/apple-2.jpg" />
-            </Grid.Item>
+            {
+              JSON.parse(images).map(({url}) => (
+                <Grid.Item>
+                  <Image className="trends-res-image" src={url} />
+                </Grid.Item>
+              ))
+            }
           </Grid>
-          {/* <Video src="http://www.laijiu.com.cn/static/video/laiding2021.mp4" className="trends-res-video"/> */}
+        ): null}
+        {type === 2 ? (
+            JSON.parse(videos).map(({url}) => (
+                <Video src={url} className="trends-res-video"/> 
+            ))): null}
         </View>
         <View className="trends-time">
-          昨天  12:57 发布
+          {create_time} 发布
         </View>
       </View>
     </View>

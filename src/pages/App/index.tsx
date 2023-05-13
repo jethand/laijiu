@@ -5,13 +5,14 @@ import './index.scss';
 import { View } from '@tarojs/components';
 import { useState } from "react";
 import React from "react";
+import Mine from "../Mine";
 const Home = React.lazy(() => import('../Home/index'));
 const Shopping = React.lazy(() => import('../Shopping/index'));
 const Culture = React.lazy(() => import('../Culture/index'));
 const ManagerCenter = React.lazy(() => import('../Manager/index'));
 
 export default function App () {
-  const [currentTab, setTab] = useState<string>("home");
+  const [currentTab, setTab] = useState<string>("manager");
   const tabs = [
     { 
       value: "home",
@@ -73,6 +74,7 @@ export default function App () {
         { currentTab === 'shopping' ? <Shopping /> : null}
         { currentTab === 'culture' ? <Culture /> : null}
         { currentTab === 'manager' ? <ManagerCenter /> : null}
+        { currentTab === 'mine' ? <Mine /> : null}
       </View>
       <View>
         <Tabbar defaultValue={currentTab} onChange={onTabChange}>

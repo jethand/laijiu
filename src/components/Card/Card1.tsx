@@ -1,11 +1,14 @@
 import { Image } from "@taroify/core";
 import { View, Text } from "@tarojs/components";
+import Taro from "@tarojs/taro";
 import './index.scss';
 export default function Card1 (props: any) {
   const { thumbnail, title, subtitle, action } = props;
   const handleClick = () => {
     if (action.url) {
-      // 跳转
+      Taro.navigateTo({
+        url: action.url
+      });
     }
   }
   return (
