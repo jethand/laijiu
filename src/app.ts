@@ -1,11 +1,15 @@
 import { PropsWithChildren } from 'react'
-import { useLaunch } from '@tarojs/taro'
+import Taro, { useLaunch } from '@tarojs/taro'
 import './app.scss'
 
 function App({ children }: PropsWithChildren) {
 
   useLaunch(() => {
-    console.log('App launched.')
+    Taro.cloud.init({
+      env: 'laijiu-server-8gee9eu811f9e51a',
+      traceUser: true
+    })
+    console.log('App launched.');
   })
 
   // children 是将要会渲染的页面

@@ -22,8 +22,8 @@ export default function ProductModify () {
       title: '加载中',
     });
 
-    const {data: { data: infoData}} = await Taro.request({ url: `http://112.74.189.230:8081/product/info/${type_id}/${pro_id}` })
-    const { data: { data: detailData} } = await Taro.request({ url: `http://112.74.189.230:8081/product/detail/${type_id}/${pro_id}` });
+    const {data: { data: infoData}} = await Taro.request({ url: `https://112.74.189.230/api/product/info/${type_id}/${pro_id}` })
+    const { data: { data: detailData} } = await Taro.request({ url: `https://112.74.189.230/api/product/detail/${type_id}/${pro_id}` });
     Taro.hideLoading();
     if (!infoData || !detailData) {
       return;
@@ -50,7 +50,7 @@ export default function ProductModify () {
     });
     if (isModidy) {
       await Taro.request({ 
-        url: `http://112.74.189.230:8081/product/info/update/${type_id}/${pro_id}`,
+        url: `https://112.74.189.230/api/product/info/update/${type_id}/${pro_id}`,
         header: {
           'content-type': 'application/json'
         },
@@ -64,7 +64,7 @@ export default function ProductModify () {
         }
       });
       await Taro.request({ 
-        url: `http://112.74.189.230:8081/product/detail/update/${type_id}/${pro_id}`,
+        url: `https://112.74.189.230/api/product/detail/update/${type_id}/${pro_id}`,
         header: {
           'content-type': 'application/json'
         },
@@ -89,7 +89,7 @@ export default function ProductModify () {
       
     } else {
       const { data: { data: createdProId}} = await Taro.request({ 
-        url: `http://112.74.189.230:8081/product/info/create/${type_id}`,
+        url: `https://112.74.189.230/api/product/info/create/${type_id}`,
         header: {
           'content-type': 'application/json'
         },
@@ -103,7 +103,7 @@ export default function ProductModify () {
         }
       });
       await Taro.request({ 
-        url: `http://112.74.189.230:8081/product/detail/create/${type_id}/${createdProId}`,
+        url: `https://112.74.189.230/api/product/detail/create/${type_id}/${createdProId}`,
         header: {
           'content-type': 'application/json'
         },
@@ -146,7 +146,6 @@ export default function ProductModify () {
   return (
     <View style={{width: "100%",backgroundColor: "#fafafa"}}>
       <Form onSubmit={onSubmit} validateTrigger={"onChange"} ref={formRef}>
-
         <Title name="基础信息" />
         <View style={{padding: "0rpx 20rpx"}}>
           <Form.Item name="discount_price" rules={[{ required: true, message: "必填项" }]}>

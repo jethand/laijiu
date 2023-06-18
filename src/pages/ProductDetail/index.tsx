@@ -8,19 +8,21 @@ import ProductDetailParam from "../../components/ProductDetailParam";
 import { getCurrentInstance } from "@tarojs/taro";
 import { useEffect, useState } from "react";
 import Taro from "@tarojs/taro";
+import { getProductInfo, getProductDetail } from "../../utils/RequestHepler";
 
 
 export default function ProductDetail () {
   
   const [proInfo, setProInfo] = useState<any>(null);
   const { router } = getCurrentInstance();
-  const { type_id, pro_id } = router?.params || {};
+  const { type_id, pro_id } = router?.params || {} as any;
   const getDetailInfo = async () => {
     Taro.showLoading({
       title: '加载中',
     });
-    const {data: { data: infoData}} = await Taro.request({ url: `http://112.74.189.230:8081/product/info/${type_id}/${pro_id}` })
-    const { data: { data: detailData} } = await Taro.request({ url: `http://112.74.189.230:8081/product/detail/${type_id}/${pro_id}` });
+
+    const [infoData] = await getProductInfo(type_id, pro_id);
+    const [detailData] = await getProductDetail(type_id, pro_id);
     Taro.hideLoading();
     if (!infoData || !detailData) {
       return;
@@ -31,7 +33,6 @@ export default function ProductDetail () {
   useEffect(() => {
     getDetailInfo();
   }, []);
-  console.log('proInfo.pic_list.split(','): ', proInfo?.pic_list);
   return (
     proInfo ? 
       <ScrollView

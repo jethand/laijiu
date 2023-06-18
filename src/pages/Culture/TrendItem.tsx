@@ -4,7 +4,7 @@ import { Avatar, Grid, Image } from "@taroify/core";
 import { View, Text, Video } from "@tarojs/components";
 import './index.scss';
 
-export default function TrendItem ({ title, create_name, type, images, videos, create_time }) {
+export default function TrendItem ({ title, create_name, type, material, create_time }) {
   return (
     <View className="trends flex-row">
       <View className="trends-avatar">
@@ -18,7 +18,7 @@ export default function TrendItem ({ title, create_name, type, images, videos, c
         {type === 1 ? (
           <Grid columns={3} bordered={false}>
             {
-              JSON.parse(images).map(({url}) => (
+              material.split(',').map((url) => (
                 <Grid.Item>
                   <Image className="trends-res-image" src={url} />
                 </Grid.Item>
@@ -27,9 +27,7 @@ export default function TrendItem ({ title, create_name, type, images, videos, c
           </Grid>
         ): null}
         {type === 2 ? (
-            JSON.parse(videos).map(({url}) => (
-                <Video src={url} className="trends-res-video"/> 
-            ))): null}
+          <Video src={material} className="trends-res-video"/>): null}
         </View>
         <View className="trends-time">
           {create_time} 发布

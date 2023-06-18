@@ -2,7 +2,7 @@
   "banner": [
     {
       "action_url": "",
-      "src_url": "http://112.74.189.230:3018/laijiu/home-banner-1.png"
+      "src_url": "https://112.74.189.230:3018/laijiu/home-banner-1.png"
     }
   ],
   "recommand": [
@@ -41,7 +41,7 @@
         "url": "/pages/ProductDetail/index?type_id=101&pro_id=1001"
       },
       "subtitle": "贵州首批老字号企业酱香型白酒",
-      "thumbnail": "http://112.74.189.230:3018/laijiu/101_1001.jpeg",
+      "thumbnail": "https://112.74.189.230:3018/laijiu/101_1001.jpeg",
       "title": "甲骨文酒-年度精选"
     },
     {
@@ -52,7 +52,7 @@
         "url": "/pages/ProductDetail/index?type_id=102&pro_id=1002"
       },
       "subtitle": "复窖古酒-30",
-      "thumbnail": "http://112.74.189.230:3018/laijiu/101_1001.jpeg"
+      "thumbnail": "https://112.74.189.230:3018/laijiu/101_1001.jpeg"
     },
     {
       "action": {
@@ -60,7 +60,7 @@
         "url": "/pages/ProductDetail/index?type_id=102&pro_id=1003"
       },
       "subtitle": "复窖古酒-龙凤呈祥",
-      "thumbnail": "http://112.74.189.230:3018/laijiu/102_1003.jpeg",
+      "thumbnail": "https://112.74.189.230:3018/laijiu/102_1003.jpeg",
       "title": "复窖古酒-1990",
       "type": 3
     },
@@ -68,7 +68,7 @@
       "subtitle": "余不欲敝帚自珍，而望与时贤，亲友共享，故将此酒献出",
       "title": "贵州回归赖酒有限公司",
       "type": 4,
-      "video": "http://112.74.189.230:3018/laijiu/home-video.mp4"
+      "video": "https://112.74.189.230:3018/laijiu/home-video.mp4"
     }
   ]
 }

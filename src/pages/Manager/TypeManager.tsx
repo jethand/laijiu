@@ -58,7 +58,6 @@ export default function TypeManager () {
       title: '添加中',
     });
     setOpen(false);
-    console.log('value: ', value);
     await productTypeCreate(value);
     Taro.showToast({
       title: "添加成功"

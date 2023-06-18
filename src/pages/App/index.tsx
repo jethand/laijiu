@@ -12,7 +12,7 @@ const Culture = React.lazy(() => import('../Culture/index'));
 const ManagerCenter = React.lazy(() => import('../Manager/index'));
 
 export default function App () {
-  const [currentTab, setTab] = useState<string>("manager");
+  const [currentTab, setTab] = useState<string>("home");
   const tabs = [
     { 
       value: "home",
@@ -44,7 +44,7 @@ export default function App () {
         frontColor: "#000000"
       }
     },
-    { 
+    /* { 
       value: "manager",
       text: "管理",
       icon: <AppsOutlined />,
@@ -53,7 +53,7 @@ export default function App () {
         backgroundColor: "#FFFFFF",
         frontColor: "#000000"
       }
-    }
+    } */
   ];
   const onTabChange = (value: string) => {
     const current = tabs.find((item) => item.value === value);
@@ -73,7 +73,7 @@ export default function App () {
         { currentTab === 'home' ? <Home /> : null}
         { currentTab === 'shopping' ? <Shopping /> : null}
         { currentTab === 'culture' ? <Culture /> : null}
-        { currentTab === 'manager' ? <ManagerCenter /> : null}
+        {/* { currentTab === 'manager' ? <ManagerCenter /> : null} */}
         { currentTab === 'mine' ? <Mine /> : null}
       </View>
       <View>

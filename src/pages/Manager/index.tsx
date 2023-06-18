@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import TypeManager from './TypeManager';
 import Culture from './Culture'
 export default function VipCenter () {
-  const [value, setValue] = useState('culture')
+  const [value, setValue] = useState('product')
   useEffect(() => {
     
   }, []);

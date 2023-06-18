@@ -4,7 +4,8 @@
     "setting": {
         "compileHotReLoad": true,
         "bigPackageSizeSupport": true,
-        "urlCheck": false,
+        "urlCheck": true,
         "preloadBackgroundData": false
-    }
+    },
+    "libVersion": "2.32.2"
 }

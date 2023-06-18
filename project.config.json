@@ -1,4 +1,5 @@
 {
+    "cloudfunctionRoot": "cloudfunctions/",
     "miniprogramRoot": "dist/",
     "projectname": "laijiu_ui",
     "description": "laijiu_ui",
@@ -28,5 +29,6 @@
     "editorSetting": {
         "tabIndent": "insertSpaces",
         "tabSize": 4
-    }
+    },
+    "cloudfunctionTemplateRoot": "cloudfunctionTemplate/"
 }

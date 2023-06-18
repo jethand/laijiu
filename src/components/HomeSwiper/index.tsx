@@ -17,6 +17,7 @@ export default function HomeSwiper ({ bannerList = []}: HomeSwiperProps) {
         {
           bannerList.map(({src_url, action_url}) => (
             <Image
+              lazyLoad
               onClick={() => {handleClick(action_url)}}
               className="home-swiper-item"
               placeholder="加载中..."

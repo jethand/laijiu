@@ -10,10 +10,10 @@ export default function Shopping () {
   const [typeList, setTypeList] = useState<any[]>([]);
   const [shoppingList, setShoppingList] = useState<any[]>([]);
   const getList = async (type_id = -1) => {
-    Taro.showLoading({
+    await Taro.showLoading({
       title: '加载中',
     });
-    const { data } = await getProductTypesListById(type_id);
+    const data = await getProductTypesListById(type_id);
     Taro.hideLoading();
     setShoppingList(data);
   };
@@ -24,7 +24,8 @@ export default function Shopping () {
     });
   };
   const fetchTypeList = async () => {
-    const { data } = await getProductTypesList();
+    const data = await getProductTypesList();
+    console.log('data: ', data);
     setTypeList([{type_id: -1, type_name: "全部"}, ...data]);
   }
   useEffect(() => {
