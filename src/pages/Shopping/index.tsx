@@ -25,7 +25,6 @@ export default function Shopping () {
   };
   const fetchTypeList = async () => {
     const data = await getProductTypesList();
-    console.log('data: ', data);
     setTypeList([{type_id: -1, type_name: "全部"}, ...data]);
   }
   useEffect(() => {

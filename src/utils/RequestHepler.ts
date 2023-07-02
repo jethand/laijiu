@@ -1,8 +1,21 @@
 import Taro from "@tarojs/taro";
 
 export const aliyunOrigin = `https://112.74.189.230`;
-export const getHomeRecommand = () => {
-  return Taro.request({url: 'https://laijiu.oss-cn-beijing.aliyuncs.com/home/home.json'});
+export const getHomeRecommand = async () => {
+  try {
+    const res: any = await Taro.cloud.callFunction({
+      // 云函数名称
+      name: 'shop',
+      // 传给云函数的参数
+      data: {
+        path: "/api/home/list",
+      },
+    });
+    return res.result[0] as any;
+  } catch (message) {
+    console.log('message: ', message);
+    return null;
+  }
 }
 
 

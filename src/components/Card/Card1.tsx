@@ -6,9 +6,15 @@ export default function Card1 (props: any) {
   const { thumbnail, title, subtitle, action } = props;
   const handleClick = () => {
     if (action.url) {
-      Taro.navigateTo({
-        url: action.url
-      });
+      if (action.url.startsWith('http')) {
+        Taro.navigateTo({
+          url: `/pages/WebViewComp/index?url=${action.url}`
+        });
+      } else {
+        Taro.navigateTo({
+          url: action.url
+        });
+      }
     }
   }
   return (

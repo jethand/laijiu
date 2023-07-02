@@ -15,14 +15,14 @@ export default function HomeSwiper ({ bannerList = []}: HomeSwiperProps) {
       <Swiper.Indicator />
       <Swiper.Item >
         {
-          bannerList.map(({src_url, action_url}) => (
+          bannerList.map(({url, action_url}) => (
             <Image
               lazyLoad
               onClick={() => {handleClick(action_url)}}
               className="home-swiper-item"
               placeholder="加载中..."
               mode="aspectFit"
-              src={src_url}
+              src={url}
             />
           ))
         }

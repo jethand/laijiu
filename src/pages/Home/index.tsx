@@ -7,17 +7,15 @@ import Taro from '@tarojs/taro';
 import { getHomeRecommand } from '../../utils/RequestHepler';
 
 export default function Home () {
-  const [ recommandData, setRecommand ] = useState<any>([]);
-  const [ bannerList, setBannerList ] = useState<any[]>([]);
+  const [homeJson, setHomeJson] = useState<any>(null);
   const fetchHomeData = async () => {
     Taro.showLoading({
       title: '加载中',
     });
-    const { data } = await getHomeRecommand();
+    const { home_json } = await getHomeRecommand();
+    const homeJson = JSON.parse(home_json);
+    setHomeJson(homeJson);
     Taro.hideLoading();
-    const { banner, recommand } = data;
-    setBannerList(banner);
-    setRecommand(recommand)
   };
   useEffect(() => {
     fetchHomeData();
@@ -31,8 +29,14 @@ export default function Home () {
       enableBackToTop
       scrollY
       scrollWithAnimation>
-      <HomeSwiper bannerList={bannerList}/>
-      { recommandData.length ? <HomeRecommand data={recommandData} /> : null }
+      {
+        homeJson ? (
+          <>
+          <HomeSwiper bannerList={homeJson?.thumbnail}/>
+          <HomeRecommand data={homeJson} />
+          </>
+        ) : null
+      }
     </ScrollView>
   )
 }

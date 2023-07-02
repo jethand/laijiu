@@ -48,7 +48,7 @@ export default function ProductDetail () {
         <View className="product-detail_header">
           <View className="product-detail_header_1">
             <View className="product-detail_header_price"><Text>¥</Text>{proInfo.discount_price}</View>
-            <View className="product-detail_header_right">
+            {/* <View className="product-detail_header_right">
               <View className="product-detail_header_right_fav">
                 <ShareOutlined className="product-detail_header_right_fav_icon"/>
                 <View className="product-detail_header_right_fav_text">分享</View>
@@ -57,7 +57,7 @@ export default function ProductDetail () {
                 <LikeOutlined className="product-detail_header_right_fav_icon"/>
                 <View className="product-detail_header_right_fav_text">收藏</View>
               </View>
-            </View>
+            </View> */}
           </View>
           <View className="product-detail_header_title">{proInfo.title}</View>
           <View className="product-detail_header_desc">{proInfo.subtitle}</View>

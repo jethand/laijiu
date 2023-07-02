@@ -5,6 +5,12 @@ import { View, Text, Video } from "@tarojs/components";
 import './index.scss';
 
 export default function TrendItem ({ title, create_name, type, material, create_time }) {
+  const date: any = new Date(create_time);
+  const [year, month, day, hours, minutes, second] = [date.getFullYear(), date.getMonth()+1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()];
+  const padStart = (number) => {
+    return number.toString().padStart(2, '0');
+  };
+  const dateString = `${year}-${padStart(month)}-${padStart(day)} ${padStart(hours)}:${padStart(minutes)}:${padStart(second)}`;
   return (
     <View className="trends flex-row">
       <View className="trends-avatar">
@@ -30,7 +36,7 @@ export default function TrendItem ({ title, create_name, type, material, create_
           <Video src={material} className="trends-res-video"/>): null}
         </View>
         <View className="trends-time">
-          {create_time} 发布
+          {dateString} 发布
         </View>
       </View>
     </View>

@@ -1,11 +1,12 @@
 import { Tabbar, SafeArea } from "@taroify/core";
 import Taro from "@tarojs/taro"
-import { HomeOutlined, ShopOutlined, AppsOutlined, AwardOutlined } from "@taroify/icons";
+import { HomeOutlined, ShopOutlined, PhoneOutlined, AwardOutlined } from "@taroify/icons";
 import './index.scss';
 import { View } from '@tarojs/components';
 import { useState } from "react";
 import React from "react";
 import Mine from "../Mine";
+import Contact from "../Contact";
 const Home = React.lazy(() => import('../Home/index'));
 const Shopping = React.lazy(() => import('../Shopping/index'));
 const Culture = React.lazy(() => import('../Culture/index'));
@@ -16,10 +17,10 @@ export default function App () {
   const tabs = [
     { 
       value: "home",
-      text: "赖酒",
+      text: "首页",
       icon: <HomeOutlined />,
       navbar: { 
-        title: "贵州回归赖酒",
+        title: "首页",
         backgroundColor: "#FFFFFF",
         frontColor: "#000000"
       }
@@ -36,10 +37,20 @@ export default function App () {
     },
     { 
       value: "culture",
-      text: "赖酒文化",
+      text: "甲骨文文化",
       icon: <AwardOutlined />,
       navbar: { 
-        title: "赖酒文化",
+        title: "甲骨文文化",
+        backgroundColor: "#FFFFFF",
+        frontColor: "#000000"
+      }
+    },
+    { 
+      value: "contact",
+      text: "联系我们",
+      icon: <PhoneOutlined />,
+      navbar: { 
+        title: "联系我们",
         backgroundColor: "#FFFFFF",
         frontColor: "#000000"
       }
@@ -75,6 +86,7 @@ export default function App () {
         { currentTab === 'culture' ? <Culture /> : null}
         {/* { currentTab === 'manager' ? <ManagerCenter /> : null} */}
         { currentTab === 'mine' ? <Mine /> : null}
+        { currentTab === 'contact' ? <Contact /> : null}
       </View>
       <View>
         <Tabbar defaultValue={currentTab} onChange={onTabChange}>

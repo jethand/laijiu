@@ -4,13 +4,19 @@ const { Sequelize } = require('sequelize');
 
 cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV, traceUser: true }) // 使用当前云环境
 
+
+const getHomeList = async (sequelize) => {
+  const [rows] = await sequelize.query('select * from home_list order by id desc limit 1');
+  return rows;
+};
+
 const getAllTypeList = async (sequelize) => {
   const [rows] = await sequelize.query('select * from product_type_list');
   return rows;
 };
 
 const getTypeListById = async (sequelize, type_id) => {
-  const sql = type_id === -1 ? `select * from product_info_list` : `select * from product_info_list where type_id = ${type_id}`
+  const sql = type_id === -1 ? `select * from product_info_list where selling = 1` : `select * from product_info_list where type_id = ${type_id} and selling = 1`
   const [rows] = await sequelize.query(sql);
   return rows;
 };
@@ -52,6 +58,9 @@ exports.main = async(event) => {
     switch(path){
       case "test": {
         return []
+      }
+      case "/api/home/list": {
+        return getHomeList(sequelize);
       }
       case "/api/product/type/list": {
         return getAllTypeList(sequelize);
