@@ -55,7 +55,7 @@ export default function HomeRecommand({ data }: any) {
       </View>
       
       {/* 赖酒文化 */}
-      <View className='home-container-title'>赖酒文化</View>
+      <View className='home-container-title'>甲骨文酒文化</View>
       <Card3 title={data.video[0].title} subtitle={data.video[0].subtitle}>
         <Video
           src={data.video[0].url}

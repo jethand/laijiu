@@ -8,7 +8,7 @@ export default function Contact () {
   const [open, setOpen] = useState(false)
   const onCopy = () => {
     Taro.setClipboardData({
-      data: "jiaguwenbj"
+      data: "JGWBJ999"
     });
   }
   const onPhone = () => {
@@ -23,7 +23,7 @@ export default function Contact () {
   return (
     <View style={{width: "100%", height: '100%'}}>
       <Cell.Group title="点击复制">
-        <Cell title="微信号" onClick={onCopy} icon={<ChatOutlined />}>jiaguwenbj</Cell>
+        <Cell title="微信号" onClick={onCopy} icon={<ChatOutlined />}>JGWBJ999</Cell>
         <Cell title="手机号" icon={<PhoneCircleOutlined />} rightIcon={<Arrow />} onClick={onPhone}></Cell>
       </Cell.Group>
       <ActionSheet open={open} onSelect={onSelect} onClose={setOpen} onCancel={() => setOpen(false)}>

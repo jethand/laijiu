@@ -9,7 +9,7 @@ export default defineAppConfig({
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: '赖酒文化',
+    navigationBarTitleText: '甲骨文酒文化',
     navigationBarTextStyle: 'black'
   }
 });

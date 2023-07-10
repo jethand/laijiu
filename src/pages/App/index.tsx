@@ -37,10 +37,10 @@ export default function App () {
     },
     { 
       value: "culture",
-      text: "甲骨文文化",
+      text: "甲骨文酒文化",
       icon: <AwardOutlined />,
       navbar: { 
-        title: "甲骨文文化",
+        title: "甲骨文酒文化",
         backgroundColor: "#FFFFFF",
         frontColor: "#000000"
       }

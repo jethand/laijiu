@@ -67,7 +67,7 @@ export default function Shopping () {
           shoppingList.length ?  shoppingList.map((item) => <ShoppingItem {...item} onClick={navigateTo} />) : 
           <Empty>
             <Empty.Image src="network" />
-            <Empty.Description>咦，网络开小差了～</Empty.Description>
+            <Empty.Description>暂无数据～</Empty.Description>
           </Empty>
         }
       </ScrollView>
