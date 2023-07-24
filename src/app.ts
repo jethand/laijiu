@@ -6,7 +6,7 @@ function App({ children }: PropsWithChildren) {
 
   useLaunch(() => {
     Taro.cloud.init({
-      env: 'laijiu-server-8gee9eu811f9e51a',
+      env: 'laijiu-server-2gn2amctb3d02574',
       traceUser: true
     })
     console.log('App launched.');

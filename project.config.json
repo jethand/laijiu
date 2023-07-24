@@ -3,7 +3,7 @@
     "miniprogramRoot": "dist/",
     "projectname": "laijiu_ui",
     "description": "laijiu_ui",
-    "appid": "wx5bd7109bb4213c74",
+    "appid": "wx59f3b39b56a81123",
     "setting": {
         "urlCheck": true,
         "es6": true,
@@ -16,7 +16,8 @@
             "disablePlugins": [],
             "outputPath": ""
         },
-        "condition": true
+        "condition": true,
+        "packNpmRelationList": []
     },
     "compileType": "miniprogram",
     "libVersion": "2.31.1",

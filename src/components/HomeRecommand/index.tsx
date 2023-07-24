@@ -17,7 +17,7 @@ export default function HomeRecommand({ data }: any) {
   } */
   return (
     <View className="home-container">
-      {/* 签到和分享 */}
+      {/* 文章和分享 */}
       <View className='flex-row'>
         <Card1 {...data.knowledge[0]} />
         <View className="width20" />
