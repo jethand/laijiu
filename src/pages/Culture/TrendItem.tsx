@@ -2,6 +2,7 @@
 
 import { Avatar, Grid, Image } from "@taroify/core";
 import { View, Text, Video } from "@tarojs/components";
+import Taro from "@tarojs/taro";
 import './index.scss';
 
 export default function TrendItem ({ title, create_name, type, material, create_time }) {
@@ -11,31 +12,39 @@ export default function TrendItem ({ title, create_name, type, material, create_
     return number.toString().padStart(2, '0');
   };
   const dateString = `${year}-${padStart(month)}-${padStart(day)} ${padStart(hours)}:${padStart(minutes)}:${padStart(second)}`;
+
+  const onPreviewImages = (currentUrl: string) => {
+    Taro.previewImage({
+      urls: material.split(','),
+      current: currentUrl
+    })
+  }
   return (
-    <View className="trends flex-row">
-      <View className="trends-avatar">
-        <Avatar src="http://www.laijiu.com.cn/../image/nav-logo.jpg" />
+    <View className='trends flex-row'>
+      <View className='trends-avatar'>
+        <Avatar src='http://www.laijiu.com.cn/../image/nav-logo.jpg' />
       </View>
-      <View className="trends-right">
-        <Text className="trends-name">{create_name}</Text>
-        <View className="trends-title">{title}</View>
+      <View className='trends-right'>
+        <Text className='trends-name'>{create_name}</Text>
+        <View className='trends-title'>{title}</View>
         
-        <View className="trends-res">
+        <View className='trends-res'>
         {type === 1 ? (
           <Grid columns={3} bordered={false}>
             {
-              material.split(',').map((url) => (
+              material.split(',').map((url: string) => (
+                // eslint-disable-next-line react/jsx-key
                 <Grid.Item>
-                  <Image className="trends-res-image" src={url} />
+                  <Image className='trends-res-image' src={url} onClick={() => {onPreviewImages(url)}} />
                 </Grid.Item>
               ))
             }
           </Grid>
         ): null}
         {type === 2 ? (
-          <Video src={material} className="trends-res-video"/>): null}
+          <Video src={material} className='trends-res-video' />): null}
         </View>
-        <View className="trends-time">
+        <View className='trends-time'>
           {dateString} 发布
         </View>
       </View>

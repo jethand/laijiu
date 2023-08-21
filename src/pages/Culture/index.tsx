@@ -6,8 +6,8 @@ import Taro from "@tarojs/taro";
 import { useEffect, useState } from "react";
 import { getCultureList } from "../../utils/RequestHepler";
 import './index.scss';
-
 import TrendItem from './TrendItem';
+
 export default function Culture () {
   const [cultureList, setCultureList] = useState<any[]>([]);
   const fetchCultureList = async () => {
@@ -25,9 +25,10 @@ export default function Culture () {
     <View style={{width: "100%"}}>
       
       {
+        // eslint-disable-next-line react/jsx-key
         cultureList.length ? cultureList.map((item) => <TrendItem {...item} />) : 
           <Empty>
-            <Empty.Image src="network" />
+            <Empty.Image src='network' />
             <Empty.Description>暂无数据～</Empty.Description>
           </Empty>
       }
