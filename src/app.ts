@@ -9,7 +9,6 @@ function App({ children }: PropsWithChildren) {
       env: 'laijiu-server-2gn2amctb3d02574',
       traceUser: true
     })
-    console.log('App launched.');
   })
 
   // children 是将要会渲染的页面

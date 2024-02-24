@@ -1,11 +1,11 @@
+/* eslint-disable jsx-quotes */
 import { Image } from "@taroify/core"
 import { View, Text } from "@tarojs/components"
 import './index.scss'
 
 export default function ShoppingItem (props: any) {
   const {
-    type_id,
-    pro_id,
+    _id,
     thumbnail,
     pro_name,
     tag,
@@ -14,16 +14,16 @@ export default function ShoppingItem (props: any) {
     onClick
   } = props;
   const handleClick = () => {
-    onClick?.(type_id, pro_id);
+    onClick?.(_id);
   }
   return (
     <View className="shopping-item" onClick={handleClick}>
       <View className="shopping-item-left">
-        <Image className="shopping-item-img" src={thumbnail}></Image>
+        <Image className="shopping-item-img" src={thumbnail?.[0]?.url}></Image>
       </View>
       <View className="shopping-item-right">
         <View className='shopping-item-right-title'>
-          {tag.split(',').map((text: string) => `【${text}】`)} 
+          {tag.map((text: string) => `【${text}】`)} 
           {pro_name}
         </View>
         <View>

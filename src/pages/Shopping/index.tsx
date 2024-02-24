@@ -1,42 +1,45 @@
 import { ConfigProvider, Sidebar, Empty } from "@taroify/core"
-import './index.scss'
 import { ScrollView } from "@tarojs/components"
 import { useEffect, useState } from "react"
-import Taro from "@tarojs/taro"
+import Taro from "@tarojs/taro";
+
+import './index.scss'
 import ShoppingItem from "../../components/ShoppingItem";
-import { getProductTypesList, getProductTypesListById } from "../../utils/RequestHepler";
+import { fetchProTypeList } from "../../api/type-list";
+import { fetchProductList } from "../../api/product-detail-list"
 
 export default function Shopping () {
   const [typeList, setTypeList] = useState<any[]>([]);
-  const [shoppingList, setShoppingList] = useState<any[]>([]);
-  const getList = async (type_id = -1) => {
-    await Taro.showLoading({
-      title: '加载中',
-    });
-    const data = await getProductTypesListById(type_id);
-    Taro.hideLoading();
-    setShoppingList(data);
+  const [productList, setProductList] = useState<any[]>([]);
+  const getList = async () => {
+    const result = await fetchProTypeList();
+    if (result.code !== 0) {
+      return;
+    }
+    const all = {_id: 'all', type_name: "全部"};
+    setTypeList([all, ...result.data]);
+    onFetchProductList(all._id)
   };
 
-  const navigateTo = (type_id: number, pro_id: number) => {
+  const onFetchProductList = async (_id: string) => {
+    const result = await fetchProductList(_id);
+    if (result.code === 0) {
+      setProductList(result.data);
+    }
+  };
+
+  const navigateTo = (_id: string) => {
     Taro.navigateTo({
-      url: `/pages/ProductDetail/index?type_id=${type_id}&pro_id=${pro_id}`,
+      url: `/pages/ProductDetail/index?proId=${_id}`,
     });
   };
-  const fetchTypeList = async () => {
-    const data = await getProductTypesList();
-    setTypeList([{type_id: -1, type_name: "全部"}, ...data]);
-  }
   useEffect(() => {
-    fetchTypeList();
     getList();
   }, []);
 
   const onSliderChange = (nextIndex: string) => {
-    const nextId = typeList[nextIndex]?.type_id;
-    if (Number.isInteger(nextId)) {
-      getList(nextId);
-    }
+    const nextId = typeList[nextIndex]?._id;
+    onFetchProductList(nextId);
   }
   return (
     <>
@@ -50,7 +53,7 @@ export default function Shopping () {
       >
         <Sidebar style={{textAlign: "center"}} onChange={onSliderChange}>
           {
-            typeList.map((item) => <Sidebar.Tab>{item.type_name}</Sidebar.Tab>)
+            typeList.map((item) => <Sidebar.Tab key={item._id}>{item.type_name}</Sidebar.Tab>)
           }
         </Sidebar>
       </ConfigProvider>
@@ -62,11 +65,12 @@ export default function Shopping () {
         enableBackToTop
         scrollY
         scrollWithAnimation
-        className="shopping-items">
+        className='shopping-items'
+      >
         { 
-          shoppingList.length ?  shoppingList.map((item) => <ShoppingItem {...item} onClick={navigateTo} />) : 
+          productList.length ?  productList.map((item) => <ShoppingItem key={item._id} {...item} onClick={navigateTo} />) : 
           <Empty>
-            <Empty.Image src="network" />
+            <Empty.Image src='network' />
             <Empty.Description>暂无数据～</Empty.Description>
           </Empty>
         }

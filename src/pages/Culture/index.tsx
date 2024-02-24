@@ -2,24 +2,21 @@
 
 import { Empty } from "@taroify/core";
 import { View } from "@tarojs/components";
-import Taro from "@tarojs/taro";
 import { useEffect, useState } from "react";
-import { getCultureList } from "../../utils/RequestHepler";
 import './index.scss';
 import TrendItem from './TrendItem';
+import { fetchCultureList } from "../../api/culture";
 
 export default function Culture () {
   const [cultureList, setCultureList] = useState<any[]>([]);
-  const fetchCultureList = async () => {
-    Taro.showLoading({
-      title: '加载中...',
-    });
-    const data = await getCultureList();
-    setCultureList(data);
-    Taro.hideLoading();
+  const init = async () => {
+    const result = await fetchCultureList();
+    if (result.code === 0) {
+      setCultureList(result.data);
+    }
   };
   useEffect(() => {
-    fetchCultureList();
+    init();
   }, []);
   return (
     <View style={{width: "100%"}}>

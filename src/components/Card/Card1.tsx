@@ -4,16 +4,16 @@ import Taro from "@tarojs/taro";
 import './index.scss';
 
 export default function Card1 (props: any) {
-  const { thumbnail, title, subtitle, action } = props;
+  const { data: {url, title, subtitle, action} } = props;
   const handleClick = () => {
-    if (action.url) {
-      if (action.url.startsWith('#小程序')) {
+    if (action.scheme) {
+      if (action.scheme.startsWith('#小程序')) {
         Taro.navigateToMiniProgram({
-          shortLink: action.url
+          shortLink: action.scheme
         });
       } else {
         Taro.navigateTo({
-          url: action.url
+          url: action.scheme
         });
       }
     }
@@ -26,9 +26,9 @@ export default function Card1 (props: any) {
         <View className='home-card-action'>{action.text}</View>
       </View>
       {
-        thumbnail ? 
+        url ? 
           <View className='flex' style={{justifyContent: "flex-end",width: "80rpx",height: "80rpx",alignSelf: "flex-end"}}>
-            <Image src={thumbnail} style={{borderRadius: "10rpx"}} />
+            <Image src={url} style={{borderRadius: "10rpx"}} />
           </View> : null
       }
     </View>
